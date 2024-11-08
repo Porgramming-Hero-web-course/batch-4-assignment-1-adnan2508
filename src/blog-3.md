@@ -11,3 +11,48 @@ TypeScript’s strength lies in its ability to add types to JavaScript, which re
 - **Improved Type Safety**: Type guards help prevent errors by ensuring that the operations on a variable are valid for its type.
 - **Better Code Readability**: Type guards make it easier for developers to understand the flow of data types.
 - **Enhanced Developer Experience**: Type guards reduce the need for casting and allow TypeScript to automatically infer types, leading to fewer errors and better code predictions.
+
+## Types of Type Guards and Their Use Cases
+
+Let’s look at some of the most common types of type guards in TypeScript and when to use them.
+
+### 1. `typeof` Type Guard
+
+The `typeof` type guard is ideal for primitive types such as `string`, `number`, and `boolean`. This type guard is simple and can be used directly in `if` statements to verify the type of a variable.
+
+**Example:**
+
+```typescript
+function printValue(value: string | number) {
+    if (typeof value === "string") {
+        console.log("String value:", value.toUpperCase());
+    } else {
+        console.log("Number value:", value.toFixed(2));
+    }
+}
+
+printValue("Hello"); // Output: String value: HELLO
+printValue(123.456); // Output: Number value: 123.46
+
+class Dog {
+    bark() {
+        console.log("Woof!");
+    }
+}
+
+class Cat {
+    meow() {
+        console.log("Meow!");
+    }
+}
+
+function makeSound(animal: Dog | Cat) {
+    if (animal instanceof Dog) {
+        animal.bark();
+    } else if (animal instanceof Cat) {
+        animal.meow();
+    }
+}
+
+makeSound(new Dog()); // Output: Woof!
+makeSound(new Cat()); // Output: Meow!
