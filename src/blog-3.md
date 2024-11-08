@@ -56,3 +56,26 @@ function makeSound(animal: Dog | Cat) {
 
 makeSound(new Dog()); // Output: Woof!
 makeSound(new Cat()); // Output: Meow!
+
+class Dog {
+    bark() {
+        console.log("Woof!");
+    }
+}
+
+class Cat {
+    meow() {
+        console.log("Meow!");
+    }
+}
+
+function makeSound(animal: Dog | Cat) {
+    if (animal instanceof Dog) {
+        animal.bark();
+    } else if (animal instanceof Cat) {
+        animal.meow();
+    }
+}
+
+makeSound(new Dog()); // Output: Woof!
+makeSound(new Cat()); // Output: Meow!
