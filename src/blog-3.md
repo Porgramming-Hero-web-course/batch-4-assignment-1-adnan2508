@@ -57,6 +57,7 @@ function makeSound(animal: Dog | Cat) {
 makeSound(new Dog()); // Output: Woof!
 makeSound(new Cat()); // Output: Meow!
 
+### 2. `instanceof` Type Guard
 class Dog {
     bark() {
         console.log("Woof!");
@@ -79,3 +80,34 @@ function makeSound(animal: Dog | Cat) {
 
 makeSound(new Dog()); // Output: Woof!
 makeSound(new Cat()); // Output: Meow!
+
+
+### 3. Custom Type Guards (User-Defined Type Guards)
+
+interface Square {
+    shape: "square";
+    sideLength: number;
+}
+
+interface Circle {
+    shape: "circle";
+    radius: number;
+}
+
+function isSquare(shape: Square | Circle): shape is Square {
+    return shape.shape === "square";
+}
+
+function calculateArea(shape: Square | Circle) {
+    if (isSquare(shape)) {
+        return shape.sideLength * shape.sideLength;
+    } else {
+        return Math.PI * shape.radius * shape.radius;
+    }
+}
+
+const square: Square = { shape: "square", sideLength: 5 };
+const circle: Circle = { shape: "circle", radius: 3 };
+
+console.log(calculateArea(square)); // Output: 25
+console.log(calculateArea(circle)); // Output: 28.27
