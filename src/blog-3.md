@@ -56,8 +56,9 @@ function makeSound(animal: Dog | Cat) {
 
 makeSound(new Dog()); // Output: Woof!
 makeSound(new Cat()); // Output: Meow!
-
+```
 ### 2. `instanceof` Type Guard
+```typescript
 class Dog {
     bark() {
         console.log("Woof!");
@@ -80,10 +81,10 @@ function makeSound(animal: Dog | Cat) {
 
 makeSound(new Dog()); // Output: Woof!
 makeSound(new Cat()); // Output: Meow!
-
+```
 
 ### 3. Custom Type Guards (User-Defined Type Guards)
-
+```typescript
 interface Square {
     shape: "square";
     sideLength: number;
